@@ -1,0 +1,10 @@
+<div class="card text-center">
+  <div class="card-header">
+    <h2>{{ post.title }}</h2>
+    <small>{{ post.date | date:'dd.MM.yyyy' }}</small>
+    <small>{{ post.author }}</small>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-block btn-primary" [routerLink]="['/post', post.id]">show text</button>
+  </div>
+</div>

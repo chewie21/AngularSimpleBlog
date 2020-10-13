@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="jumbotron bg-white">
+    <h1 class="display-4">Создание поста</h1>
+    <div class="form-group">
+      <label for="title">Название</label>
+      <input class="form-control"
+             [ngClass]="form.get('title').touched && form.get('title').invalid ? 'is-invalid' : ''"
+             type="text" formControlName="title" id="title">
+      <div class="invalid-feedback" *ngIf="form.get('title').errors">
+        <div *ngIf="form.get('title').errors.required">
+          Введите название...
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="form-group">
+      <label>Контент поста:</label>
+      <quill-editor formControlName="text"></quill-editor>
+    </div>
+    <hr>
+    <div class="form-group">
+      <label for="author">Автор</label>
+      <input class="form-control"
+             [ngClass]="form.get('author').touched && form.get('author').invalid ? 'is-invalid' : ''"
+             type="text" formControlName="author" id="author">
+      <div class="invalid-feedback" *ngIf="form.get('author').errors">
+        <div *ngIf="form.get('author').errors.required">
+          Введите автора...
+        </div>
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-block btn-primary">
+      Отправить
+    </button>
+  </div>
+</form>

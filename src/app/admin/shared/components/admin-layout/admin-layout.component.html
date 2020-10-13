@@ -1,0 +1,19 @@
+<app-alert></app-alert>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="/">Angular Admin</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav" style="margin-left: auto">
+      <a class="nav-item nav-link" [routerLink]="['/admin', 'dashboard']">Главная</a>
+      <a class="nav-item nav-link" [routerLink]="['/admin', 'create']">Создать</a>
+      <a class="nav-item nav-link" href="#" (click)="logout($event)">Выйти</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+

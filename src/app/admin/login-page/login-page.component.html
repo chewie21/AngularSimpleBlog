@@ -1,0 +1,41 @@
+<form class="py-4" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="alert alert-danger" role="alert"
+       *ngIf="auth.error$ | async as error"
+  >{{error}}</div>
+  <div class="alert alert-info" role="alert"
+       *ngIf="message"
+  >{{message}}</div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input class="form-control"
+           [ngClass]="form.get('email').touched && form.get('email').invalid ? 'is-invalid' : ''"
+           type="email" formControlName="email"  id="email" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted"
+            >Мы никому не передадим ваш email</small>
+    <div class="invalid-feedback" *ngIf="form.get('email').errors">
+      <div *ngIf="form.get('email').errors.email">
+        Неверный формат email...
+      </div>
+      <div *ngIf="form.get('email').errors.required">
+        Введите email...
+      </div>
+    </div>
+  </div>
+  <div
+    class="form-group">
+    <label for="password">Password</label>
+    <input class="form-control"
+           [ngClass]="form.get('password').touched && form.get('password').invalid ? 'is-invalid' : ''"
+           type="password" formControlName="password" id="password">
+    <div class="invalid-feedback" *ngIf="form.get('password').errors">
+      <div *ngIf="form.get('password').errors.minlength">
+        Пароль должен быть не менне {{form.get('password').errors.minlength.requiredLength}} символов!
+        Сейчас он - {{form.get('password').errors.minlength.actualLength}} символов!
+      </div>
+      <div *ngIf="form.get('password').errors.required">
+        Введите пароль...
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="submitted">Submit</button>
+</form>

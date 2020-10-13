@@ -1,0 +1,22 @@
+<div *ngIf="post$ | async as post; else loading">
+  <div class="jumbotron bg-white">
+    <h1 class="display-4">{{post.title}}</h1>
+    <div>
+      <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
+    <hr class="my-4">
+    <div class="row justify-content-around">
+      <small class="lead">{{post.author}}</small>
+      <small class="lead">{{post.date | date:'medium':null:'ru'}}</small>
+      <button class="btn btn-primary" routerLink="/">Назад</button>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
